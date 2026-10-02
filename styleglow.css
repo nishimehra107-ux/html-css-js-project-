@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+}
+
+/* BUTTON */
+.btn {
+    padding: 15px 40px;
+    border: none;
+    outline: none;
+
+    color: #0e0d0d;
+    background: #faf7f7;
+
+    cursor: pointer;
+    position: relative;
+
+    border-radius: 10px;
+    font-size: 20px;
+
+    z-index: 1;
+}
+
+/* GLOW */
+.btn::before {
+    content: "";
+
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        45deg,
+        #da70d6,
+        #179ff1,
+        #fea984,
+        #8e4585,
+        #76854b,
+        #52eea3,
+        #ff7858,
+        #4e7791
+    );
+
+    background-size: 600%;
+
+    filter: blur(8px);
+
+    z-index: -1;
+
+    animation: glowing 20s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+/* HOVER */
+.btn:hover::before {
+    filter: blur(12px);
+}
+
+/* CLICK */
+.btn:active {
+    transform: scale(0.98);
+}
